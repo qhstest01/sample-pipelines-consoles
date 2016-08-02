@@ -72,4 +72,4 @@ resources:
     integration: ship-slack
     pointer:
       recipients:
-        - "pvt2"
+        - "#builds-vr"
