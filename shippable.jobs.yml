@@ -50,10 +50,7 @@ jobs:
       - IN: env-test-qhs
       - TASK: managed
         deployMethod: upgrade
-    on_success:
-      - NOTIFY: slackNotifcation-qhs
-    on_failure:
-      - NOTIFY: slackNotification-qhs
+   
 
   - name: box-man-qhs
     type: manifest
