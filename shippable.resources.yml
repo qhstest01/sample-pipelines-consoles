@@ -1,0 +1,75 @@
+resources:
+  - name: dv-image-qhs
+    type: image
+    integration: ship-dock12
+    pointer:
+      sourceName: "library/nginx"
+    seed:
+      versionName: latest
+
+  - name: dv-opts-qhs
+    type: dockerOptions
+    version:
+      memory: 64
+      cpuShares: 256
+      portMappings:
+        - "80:80"
+
+  - name: dv-params-qhs
+    type: params
+    version:
+      params:
+        MONGO_API_URL: "localhost:28017"
+
+  - name: box-image-qhs
+    type: image
+    integration: ship-dock12
+    pointer:
+      sourceName: "shiphitchcock2/docker-node-test"
+    seed:
+      versionName: "gamma"
+
+  - name: box-params-qhs
+    type: params
+    version:
+      params:
+        DB_HOST: "ds015700.mlab.com"
+        DB_NAME: "ayeaye"
+        DB_PORT: "15700"
+        DB_USERNAME: "aye0aye"
+        DB_PASSWORD: "aye0aye"
+        ENVIRONMENT: "test-aws"
+
+  - name: box-opts-qhs
+    type: dockerOptions
+    version:
+      memory: 64
+      cpuShares: 512
+
+  
+
+  - name: env-test-qhs
+    type: cluster
+    integration: ship-aws
+    pointer:
+      sourceName : "testCL" #name of the cluster we are deploying
+      region: "us-west-2"
+
+  - name: box-scaler-qhs
+    type: replicas
+    version:
+      count: 1
+
+ 
+  # This time resource posts new versions for it, every 2 minutes
+  - name: nightly-qhs
+    type: time
+    seed:
+      interval: "*/2 * * * *"
+
+  - name: slackNotification-qhs
+    type: notification
+    integration: ship-slack
+    pointer:
+      recipients:
+        - "pvt2"
