@@ -1,0 +1,75 @@
+jobs:
+  - name: dv-man-qhs
+    type: manifest
+    steps:
+      - IN: dv-image-qhs
+        pull: false
+      - IN: dv-opts-qhs
+      - IN: dv-params0qhs
+        applyTo:
+          - dv-image-qhs
+      - TASK: managed
+      - IN: trigger-dv-man-qhs
+    on_success:
+      - echo 'this is on_success step of dv-man of type manifest'
+    on_failure:
+      - echo 'this is on_failure step of dv-man of type manifest'
+
+  - name: dv-man-versionName-qhs
+    type: manifest
+    steps:
+      - IN: dv-image-qhs
+        pull: false
+        versionName: latest
+      - IN: dv-opts-qhs
+      - IN: dv-params-qhs
+        applyTo:
+          - dv-image-qhs
+      - TASK: managed
+      - IN: trigger-dv-man-qhs
+
+  - name: dv-man-versionNumber-qhs
+    type: manifest
+    steps:
+      - IN: dv-image-qhs
+        pull: false
+        versionNumber: 1
+      - IN: dv-opts-qhs
+      - IN: dv-params-qhs
+        applyTo:
+          - dv-image-qhs
+      - TASK: managed
+      - IN: trigger-dv-man-qhs
+
+  - name: dv-test-qhs
+    type: deploy
+    on_start:
+      - NOTIFY: slackNotification-qhs
+    steps:
+      - IN: dv-man-qhs
+      - IN: env-test-qhs
+      - TASK: managed
+        deployMethod: upgrade
+    on_success:
+      - NOTIFY: slackNotifcation-qhs
+    on_failure:
+      - NOTIFY: slackNotification-qhs
+
+  - name: box-man-qhs
+    type: manifest
+    steps:
+      - IN: box-image-qhs
+        pull: false
+      - IN: box-opts-qhs
+      - IN: box-params-qhs
+      - TASK: managed
+
+  - name: box-test-qhs
+    type: deploy
+    steps:
+      - IN: box-man-qhs
+      - IN: env-test-qhs
+      - TASK: managed
+        deployMethod: upgrade
+
+  
