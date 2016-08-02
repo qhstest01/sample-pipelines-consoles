@@ -9,7 +9,7 @@ jobs:
         applyTo:
           - dv-image-qhs
       - TASK: managed
-      - IN: trigger-dv-man-qhs
+     # - IN: trigger-dv-man-qhs
     on_success:
       - echo 'this is on_success step of dv-man of type manifest'
       - NOTIFY: slackNotification-qhs
