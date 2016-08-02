@@ -1,5 +1,5 @@
 jobs:
-  - name: dv-man-qhs
+  - name: dv-man-qhs1
     type: manifest
     steps:
       - IN: dv-image-qhs
@@ -50,11 +50,11 @@ jobs:
     on_start:
       - NOTIFY: slackNotification-qhs
     steps:
-      - IN: dv-man-qhs
+      - IN: dv-man-qhs1
       - IN: env-test-qhs
       - TASK: managed
         deployMethod: upgrade
-        
+   
     on_success:
       - NOTIFY: slackNotification-qhs
     on_failure:
