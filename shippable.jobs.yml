@@ -5,7 +5,7 @@ jobs:
       - IN: dv-image-qhs
         pull: false
       - IN: dv-opts-qhs
-      - IN: dv-params0qhs
+      - IN: dv-params-qhs
         applyTo:
           - dv-image-qhs
       - TASK: managed
