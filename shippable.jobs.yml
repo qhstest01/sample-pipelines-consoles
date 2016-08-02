@@ -19,7 +19,7 @@ jobs:
       
       
 
-  - name: dv-man-versionName-qhs
+  - name: dv-man-versionName-qhs1
     type: manifest
     steps:
       - IN: dv-image-qhs
@@ -32,7 +32,7 @@ jobs:
       - TASK: managed
       - IN: trigger-dv-man-qhs
 
-  - name: dv-man-versionNumber-qhs
+  - name: dv-man-versionNumber-qhs1
     type: manifest
     steps:
       - IN: dv-image-qhs
