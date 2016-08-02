@@ -50,7 +50,7 @@ resources:
 
   - name: env-test-qhs
     type: cluster
-    integration: ship-aws
+    integration: ship-ecr
     pointer:
       sourceName : "testCL" #name of the cluster we are deploying
       region: "us-west-2"
