@@ -1,0 +1,5 @@
+triggers:
+   - name: trigger-dv-man-qhs
+     type: trigger
+     version:
+       counter: 1
