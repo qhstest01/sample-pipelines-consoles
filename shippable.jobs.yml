@@ -50,6 +50,11 @@ jobs:
       - IN: env-test-qhs
       - TASK: managed
         deployMethod: upgrade
+        
+    on_success:
+      - NOTIFY: slackNotification-qhs
+    on_failure:
+      - NOTIFY: slackNotification-qhs
    
 
   - name: box-man-qhs
