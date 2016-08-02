@@ -15,7 +15,7 @@ jobs:
       - NOTIFY: slackNotification-qhs
     on_failure:
       - echo 'this is on_failure step of dv-man of type manifest'
-      - NOTIFY: slackNotifcation-qhs
+      - NOTIFY: slackNotification-qhs
       
       
 
