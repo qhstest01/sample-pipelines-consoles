@@ -12,7 +12,7 @@ jobs:
       - IN: trigger-dv-man-qhs
     on_success:
       - echo 'this is on_success step of dv-man of type manifest'
-      - NOTIFY: slackNotifcation-qhs
+      - NOTIFY: slackNotification-qhs
     on_failure:
       - echo 'this is on_failure step of dv-man of type manifest'
       - NOTIFY: slackNotifcation-qhs
