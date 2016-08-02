@@ -1,5 +1,5 @@
 jobs:
-  - name: dv-man-qhs2
+  - name: dv-man-qhs3
     type: manifest
     steps:
       - IN: dv-image-qhs
@@ -19,7 +19,7 @@ jobs:
       
       
 
-  - name: dv-man-versionName-qhs1
+  - name: dv-man-versionName-qhs3
     type: manifest
     steps:
       - IN: dv-image-qhs
