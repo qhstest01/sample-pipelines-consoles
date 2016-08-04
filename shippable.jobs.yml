@@ -1,13 +1,13 @@
 jobs:
-  - name: dv-man-qhs5
+  - name: dv-man-qhs5-test
     type: manifest
     steps:
-      - IN: dv-image-qhs
+      - IN: dv-image-qhs-test
         pull: false
-      - IN: dv-opts-qhs
-      - IN: dv-params-qhs
+      - IN: dv-opts-qhs-test
+      - IN: dv-params-qhs-test
         applyTo:
-          - dv-image-qhs
+          - dv-image-qhs-test
       - TASK: managed
      # - IN: trigger-dv-man-qhs
     on_success:
@@ -19,62 +19,62 @@ jobs:
       
       
 
-  - name: dv-man-versionName-qhs5
+  - name: dv-man-versionName-qhs5-test
     type: manifest
     steps:
-      - IN: dv-image-qhs
+      - IN: dv-image-qhs-test
         pull: false
         versionName: latest
-      - IN: dv-opts-qhs
-      - IN: dv-params-qhs
+      - IN: dv-opts-qhs-test
+      - IN: dv-params-qhs-test
         applyTo:
-          - dv-image-qhs
+          - dv-image-qhs-test
       - TASK: managed
-      - IN: trigger-dv-man-qhs
+      - IN: trigger-dv-man-qhs-test
 
-  - name: dv-man-versionNumber-qhs5
+  - name: dv-man-versionNumber-qhs5-test
     type: manifest
     steps:
-      - IN: dv-image-qhs
+      - IN: dv-image-qhs-test
         pull: false
         versionNumber: 1
-      - IN: dv-opts-qhs
-      - IN: dv-params-qhs
+      - IN: dv-opts-qhs-test
+      - IN: dv-params-qhs-test
         applyTo:
-          - dv-image-qhs
+          - dv-image-qhs-test
       - TASK: managed
-      - IN: trigger-dv-man-qhs
+      - IN: trigger-dv-man-qhs-test
 
-  - name: dv-test-qhs
+  - name: dv-test-qhs-test
     type: deploy
     on_start:
-      - NOTIFY: slackNotification-qhs
+      - NOTIFY: slackNotification-qhs-test
     steps:
-      - IN: dv-man-qhs5
-      - IN: env-test-qhs
+      - IN: dv-man-qhs5-test
+      - IN: env-test-qhs-test
       - TASK: managed
         deployMethod: upgrade
    
     on_success:
-      - NOTIFY: slackNotification-qhs
+      - NOTIFY: slackNotification-qhs-test
     on_failure:
-      - NOTIFY: slackNotification-qhs
+      - NOTIFY: slackNotification-qhs-test
    
 
-  - name: box-man-qhs5
+  - name: box-man-qhs5-test
     type: manifest
     steps:
-      - IN: box-image-qhs
+      - IN: box-image-qhs-test
         pull: false
-      - IN: box-opts-qhs
-      - IN: box-params-qhs
+      - IN: box-opts-qhs-test
+      - IN: box-params-qhs-test
       - TASK: managed
 
-  - name: box-test-qhs5
+  - name: box-test-qhs5-test
     type: deploy
     steps:
-      - IN: box-man-qhs
-      - IN: env-test-qhs
+      - IN: box-man-qhs-test
+      - IN: env-test-qhs-test
       - TASK: managed
         deployMethod: upgrade
 
