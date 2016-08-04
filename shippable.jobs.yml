@@ -1,5 +1,5 @@
 jobs:
-  - name: dv-man-qhs4
+  - name: dv-man-qhs5
     type: manifest
     steps:
       - IN: dv-image-qhs
@@ -19,7 +19,7 @@ jobs:
       
       
 
-  - name: dv-man-versionName-qhs3
+  - name: dv-man-versionName-qhs5
     type: manifest
     steps:
       - IN: dv-image-qhs
@@ -32,7 +32,7 @@ jobs:
       - TASK: managed
       - IN: trigger-dv-man-qhs
 
-  - name: dv-man-versionNumber-qhs1
+  - name: dv-man-versionNumber-qhs5
     type: manifest
     steps:
       - IN: dv-image-qhs
@@ -50,7 +50,7 @@ jobs:
     on_start:
       - NOTIFY: slackNotification-qhs
     steps:
-      - IN: dv-man-qhs4
+      - IN: dv-man-qhs5
       - IN: env-test-qhs
       - TASK: managed
         deployMethod: upgrade
@@ -61,7 +61,7 @@ jobs:
       - NOTIFY: slackNotification-qhs
    
 
-  - name: box-man-qhs
+  - name: box-man-qhs5
     type: manifest
     steps:
       - IN: box-image-qhs
@@ -70,7 +70,7 @@ jobs:
       - IN: box-params-qhs
       - TASK: managed
 
-  - name: box-test-qhs
+  - name: box-test-qhs5
     type: deploy
     steps:
       - IN: box-man-qhs
